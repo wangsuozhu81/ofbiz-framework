@@ -24,14 +24,13 @@ import java.util.List;
 import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
-import org.apache.ofbiz.entity.util.EntityQuery;
 
 public class EntityBatchIterator implements Iterator<GenericValue> {
-    public static final String MODULE = EntityBatchIterator.class.getName();
+    private static final String MODULE = EntityBatchIterator.class.getName();
 
     private EntityQuery query;
-    List<GenericValue> currentResultSet;
-    int currentIndex = 0;
+    private List<GenericValue> currentResultSet;
+    private int currentIndex = 0;
     private int currentOffset = 0;
 
     public EntityBatchIterator(EntityQuery query) {
@@ -55,6 +54,11 @@ public class EntityBatchIterator implements Iterator<GenericValue> {
         }
     }
 
+    /**
+     * Has next with exception boolean.
+     * @return the boolean
+     * @throws GenericEntityException the generic entity exception
+     */
     public boolean hasNextWithException() throws GenericEntityException {
         if (needNextBatch()) {
             getNextBatch();
@@ -71,6 +75,11 @@ public class EntityBatchIterator implements Iterator<GenericValue> {
         }
     }
 
+    /**
+     * Next with exception generic value.
+     * @return the generic value
+     * @throws GenericEntityException the generic entity exception
+     */
     public GenericValue nextWithException() throws GenericEntityException {
         return hasNextWithException() ? currentResultSet.get(currentIndex++) : null;
     }

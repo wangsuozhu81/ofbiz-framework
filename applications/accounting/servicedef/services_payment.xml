@@ -108,8 +108,8 @@ under the License.
         <auto-attributes mode="OUT" include="nonpk" optional="true"/>
     </service>
 
-    <service name="createPaymentAndApplication" engine="simple"
-            location="component://accounting/minilang/payment/PaymentServices.xml" invoke="createPaymentAndApplication" auth="true">
+    <service name="createPaymentAndApplication" engine="groovy"
+            location="component://accounting/groovyScripts/payment/PaymentServices.groovy" invoke="createPaymentAndApplication" auth="true">
         <description>Create a payment and a payment application for the full amount</description>
         <auto-attributes entity-name="Payment" include="nonpk" mode="IN" optional="true"/>
         <auto-attributes entity-name="Payment" include="pk" mode="INOUT" optional="true"/>
@@ -133,8 +133,8 @@ under the License.
         <attribute name="invoice" type="org.apache.ofbiz.entity.GenericValue" mode="IN" optional="true"/>
         <attribute name="invoicePaymentInfoList" type="List" mode="OUT" optional="false"/>
     </service>
-    <service name="getInvoicePaymentInfoListByDueDateOffset" engine="simple"
-            location="component://accounting/minilang/payment/PaymentServices.xml" invoke="getInvoicePaymentInfoListByDueDateOffset" auth="true">
+    <service name="getInvoicePaymentInfoListByDueDateOffset" engine="groovy"
+            location="component://accounting/groovyScripts/payment/PaymentServices.groovy" invoke="getInvoicePaymentInfoListByDueDateOffset" auth="true">
         <description>Create a list with information on payment due dates and amounts.</description>
         <attribute name="invoiceTypeId" type="String" mode="IN" optional="false"/>
         <attribute name="daysOffset" type="Long" mode="IN" optional="false"/>
@@ -196,8 +196,8 @@ under the License.
         <attribute name="paymentGroupName" type="String" mode="IN" optional="true"/>
         <attribute name="paymentGroupId" type="String" mode="OUT" optional="false"/>
     </service>
-    <service name="cancelCheckRunPayments" engine="simple"
-            location="component://accounting/minilang/payment/PaymentServices.xml" invoke="cancelCheckRunPayments" auth="true">
+    <service name="cancelCheckRunPayments" engine="groovy"
+            location="component://accounting/groovyScripts/payment/PaymentServices.groovy" invoke="cancelCheckRunPayments" auth="true">
         <description>Cancel all payments for payment group</description>
         <attribute name="paymentGroupId" type="String" mode="IN" optional="false"/>
     </service>
@@ -214,8 +214,8 @@ under the License.
         <attribute name="finAccountTransId" type="String" mode="IN" optional="true"/>
         <attribute name="payments" type="List" mode="OUT" optional="true"/>
     </service>
-    <service name="getPaymentGroupReconciliationId" engine="simple"
-            location="component://accounting/minilang/payment/PaymentServices.xml" invoke="getPaymentGroupReconciliationId" auth="true">
+    <service name="getPaymentGroupReconciliationId" engine="groovy"
+            location="component://accounting/groovyScripts/payment/PaymentServices.groovy" invoke="getPaymentGroupReconciliationId" auth="true">
         <description>Get ReconciliationId associated to paymentGroup</description>
         <attribute name="paymentGroupId" type="String" mode="IN" optional="false"/>
         <attribute name="glReconciliationId" type="String" mode="OUT" optional="true"/>
